@@ -197,6 +197,19 @@ docblock at the top of the file then this option will add a newline to it with t
 <tr><td><code>false</code></td><td><code>--insert-pragma</code></td><td><code>insertPragma: &lt;bool&gt;</code></td></tr>
 </tbody>
 </table>
+<h2><a class="anchor" aria-hidden="true" name="prose-wrap"></a><a href="#prose-wrap" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prose Wrap</h2>
+<p>By default, Prettier will wrap markdown text at the specified print width.
+In some cases you may want to rely on editor/viewer soft wrapping instead,
+so this option allows you to opt out. When prose wrapping is disabled, each
+paragraph will be printed on its own line.</p>
+<table>
+<thead>
+<tr><th>Default</th><th>CLI Override</th><th>API Override</th></tr>
+</thead>
+<tbody>
+<tr><td><code>true</code></td><td><code>--no-prose-wrap</code></td><td><code>proseWrap: &lt;bool&gt;</code></td></tr>
+</tbody>
+</table>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="ignore.html">← Ignoring Code</a><a class="docs-next button" href="configuration.html">Configuration File →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/icon.png" alt="Prettier"/></a><div><h5>Docs</h5><a href="/docs/en/index.html">About</a><a href="/docs/en/install.html">Usage</a></div><div><h5>Community</h5><a href="/en/users/">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/prettier" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://gitter.im/jlongster/prettier">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/prettier/prettier">GitHub</a><a href="https://github.com/prettier/prettier/releases">Releases</a><a href="https://github.com/prettier/prettier/issues">Issues</a><a class="github-button" href="https://github.com/prettier/prettier" data-icon="octicon-star" data-count-href="/prettier/prettier/stargazers" data-count-api="/repos/prettier/prettier#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
                 apiKey: '9fcdb2a62af4c47cc5eecf3d5a747818',
