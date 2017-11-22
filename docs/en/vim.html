@@ -71,8 +71,7 @@ Plug <span class="hljs-string">'prettier/vim-prettier'</span>, {
 <p>By default parsing errors will open the quickfix but can also be disabled</p>
 <pre><code class="hljs"><span class="hljs-built_in">let</span> g:prettier<span class="hljs-comment">#quickfix_enabled = 0</span>
 </code></pre>
-<p>To enable vim-prettier to run in files without requiring the &quot;@format&quot; doc tag.
-First disable the default autoformat, then update to your own custom behaviour</p>
+<p>To enable vim-prettier to run in files without requiring the &quot;@format&quot; doc tag. First disable the default autoformat, then update to your own custom behaviour</p>
 <p>Running before saving sync:</p>
 <pre><code class="hljs">let g:prettier<span class="hljs-selector-id">#autoformat</span> = <span class="hljs-number">0</span>
 autocmd BufWritePre *<span class="hljs-selector-class">.js</span>,*<span class="hljs-selector-class">.css</span>,*<span class="hljs-selector-class">.scss</span>,*<span class="hljs-selector-class">.less</span> Prettier
@@ -115,17 +114,12 @@ autocmd BufWritePre *<span class="hljs-selector-class">.js</span>,*<span class="
 
 <span class="hljs-comment">" flow|babylon|typescript|postcss</span>
 <span class="hljs-variable">g:prettier</span>#config#parser = <span class="hljs-string">'flow'</span>
-
 </code></pre>
 <hr>
 <h2><a class="anchor" aria-hidden="true" name="ale"></a><a href="#ale" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ALE</h2>
 <h3><a class="anchor" aria-hidden="true" name="ale-installation"></a><a href="#ale-installation" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ALE - Installation</h3>
-<p><a href="https://github.com/w0rp/ale">ALE</a> is an asynchronous lint engine for Vim that
-also has the ability to run formatters over code, including Prettier. For ALE
-to work you'll have to be using either Vim 8 or Neovim as ALE makes use of the
-asynchronous abilities that both Vim 8 and Neovim provide.</p>
-<p>The best way to install ALE is with your favourite plugin manager for Vim, such
-as <a href="https://github.com/junegunn/vim-plug">Vim-Plug</a>:</p>
+<p><a href="https://github.com/w0rp/ale">ALE</a> is an asynchronous lint engine for Vim that also has the ability to run formatters over code, including Prettier. For ALE to work you'll have to be using either Vim 8 or Neovim as ALE makes use of the asynchronous abilities that both Vim 8 and Neovim provide.</p>
+<p>The best way to install ALE is with your favourite plugin manager for Vim, such as <a href="https://github.com/junegunn/vim-plug">Vim-Plug</a>:</p>
 <pre><code class="hljs"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'w0rp/ale'</span>
 </code></pre>
 <p>You can find further instructions on the <a href="https://github.com/w0rp/ale#3-installation">ALE repository</a>.</p>
@@ -134,28 +128,22 @@ as <a href="https://github.com/junegunn/vim-plug">Vim-Plug</a>:</p>
 <pre><code class="hljs"><span class="hljs-keyword">let</span> <span class="hljs-variable">g:ale_fixers</span> = {}
 <span class="hljs-keyword">let</span> <span class="hljs-variable">g:ale_fixers</span>[<span class="hljs-string">'javascript'</span>] = [<span class="hljs-string">'prettier'</span>]
 </code></pre>
-<p>ALE will first use the Prettier installed locally (in
-<code>node_modules/.bin/prettier</code>) before looking for a global installation.</p>
+<p>ALE will first use the Prettier installed locally (in <code>node_modules/.bin/prettier</code>) before looking for a global installation.</p>
 <p>You can then run <code>:ALEFix</code> in a JavaScript file to run Prettier.</p>
 <h3><a class="anchor" aria-hidden="true" name="ale-configuration"></a><a href="#ale-configuration" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ALE - Configuration</h3>
-<p>To have ALE run <code>prettier</code> when you save a file you can tell ALE to run
-automatically:</p>
+<p>To have ALE run <code>prettier</code> when you save a file you can tell ALE to run automatically:</p>
 <pre><code class="hljs"><span class="hljs-keyword">let</span> g:<span class="hljs-attr">ale_fix_on_save</span> = <span class="hljs-number">1</span>
 </code></pre>
-<p>To configure Prettier, you can set <code>g:ale_javascript_prettier_options</code>. This is
-a string that will be passed through to the Prettier command line tool:</p>
+<p>To configure Prettier, you can set <code>g:ale_javascript_prettier_options</code>. This is a string that will be passed through to the Prettier command line tool:</p>
 <pre><code class="hljs"><span class="hljs-keyword">let</span> <span class="hljs-variable">g:ale_javascript_prettier_options</span> = <span class="hljs-string">'--single-quote --trailing-comma es5'</span>
 </code></pre>
-<p>If you use Prettier config files, you must set
-<code>g:ale_javascript_prettier_use_local_config</code> to have ALE respect them:</p>
+<p>If you use Prettier config files, you must set <code>g:ale_javascript_prettier_use_local_config</code> to have ALE respect them:</p>
 <pre><code class="hljs"><span class="hljs-keyword">let</span> g:<span class="hljs-attr">ale_javascript_prettier_use_local_config</span> = <span class="hljs-number">1</span>
 </code></pre>
 <hr>
 <h2><a class="anchor" aria-hidden="true" name="running-manually"></a><a href="#running-manually" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running manually</h2>
 <h3><a class="anchor" aria-hidden="true" name="running-prettier-manually-in-vim"></a><a href="#running-prettier-manually-in-vim" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running Prettier manually in Vim</h3>
-<p>If you need a little more control over when prettier is run, you can create a
-custom key binding. In this example, <code>gp</code> (mnemonic: &quot;get pretty&quot;) is used to
-run prettier (with options) in the currently active buffer:</p>
+<p>If you need a little more control over when prettier is run, you can create a custom key binding. In this example, <code>gp</code> (mnemonic: &quot;get pretty&quot;) is used to run prettier (with options) in the currently active buffer:</p>
 <pre><code class="hljs"><span class="hljs-keyword">nnoremap</span> gp :<span class="hljs-keyword">silent</span> %!prettier --stdin --trailing-comma <span class="hljs-keyword">all</span> --single-quote<span class="hljs-symbol">&lt;CR&gt;</span>
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="webstorm.html">← Webstorm Setup</a><a class="docs-next button" href="technical-details.html">Technical Details →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/icon.png" alt="Prettier"/></a><div><h5>Docs</h5><a href="/docs/en/index.html">About</a><a href="/docs/en/install.html">Usage</a></div><div><h5>Community</h5><a href="/en/users/">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/prettier" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://gitter.im/jlongster/prettier">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/prettier/prettier">GitHub</a><a href="https://github.com/prettier/prettier/releases">Releases</a><a href="https://github.com/prettier/prettier/issues">Issues</a><a class="github-button" href="https://github.com/prettier/prettier" data-icon="octicon-star" data-count-href="/prettier/prettier/stargazers" data-count-api="/repos/prettier/prettier#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>

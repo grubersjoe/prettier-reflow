@@ -71,8 +71,7 @@
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" name="trailing-commas"></a><a href="#trailing-commas" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Trailing Commas</h2>
-<p>Print trailing commas wherever possible when multi-line. (A single-line array,
-for example, never gets trailing commas.)</p>
+<p>Print trailing commas wherever possible when multi-line. (A single-line array, for example, never gets trailing commas.)</p>
 <p>Valid options:</p>
 <ul>
 <li><code>&quot;none&quot;</code> - No trailing commas.</li>
@@ -142,7 +141,7 @@ for example, never gets trailing commas.)</p>
 <li><a href="https://github.com/graphql/graphql-js/tree/master/src/language"><code>graphql</code></a> <em>Since v1.5.0</em></li>
 <li><a href="https://github.com/wooorm/remark/tree/master/packages/remark-parse"><code>markdown</code></a> <em>Since v1.8.0</em></li>
 </ul>
-<p><a href="/docs/en/api.html#custom-parser-api">Custom parsers</a> are also supported.  <em>Since v1.5.0</em></p>
+<p><a href="/docs/en/api.html#custom-parser-api">Custom parsers</a> are also supported. <em>Since v1.5.0</em></p>
 <table>
 <thead>
 <tr><th>Default</th><th>CLI Override</th><th>API Override</th></tr>
@@ -166,8 +165,7 @@ for example, never gets trailing commas.)</p>
 </table>
 <h2><a class="anchor" aria-hidden="true" name="require-pragma"></a><a href="#require-pragma" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Require pragma</h2>
 <p><em>available in v1.7.0+</em></p>
-<p>Prettier can restrict itself to only format files that contain a special comment, called a pragma, at the top of the file. This is very useful
-when gradually transitioning large, unformatted codebases to prettier.</p>
+<p>Prettier can restrict itself to only format files that contain a special comment, called a pragma, at the top of the file. This is very useful when gradually transitioning large, unformatted codebases to prettier.</p>
 <p>For example, a file with the following as its first comment will be formatted when <code>--require-pragma</code> is supplied:</p>
 <pre><code class="hljs css js"><span class="hljs-comment">/**
  * @prettier
@@ -188,9 +186,7 @@ when gradually transitioning large, unformatted codebases to prettier.</p>
 </table>
 <h2><a class="anchor" aria-hidden="true" name="insert-pragma"></a><a href="#insert-pragma" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Insert Pragma</h2>
 <p><em>available in v1.8.0+</em></p>
-<p>Prettier can insert a special @format marker at the top of files specifying that the file has been formatted
-with prettier.  This works well when used in tandem with the <code>--require-pragma</code> option.  If there is already a
-docblock at the top of the file then this option will add a newline to it with the @format marker.</p>
+<p>Prettier can insert a special @format marker at the top of files specifying that the file has been formatted with prettier. This works well when used in tandem with the <code>--require-pragma</code> option. If there is already a docblock at the top of the file then this option will add a newline to it with the @format marker.</p>
 <table>
 <thead>
 <tr><th>Default</th><th>CLI Override</th><th>API Override</th></tr>
@@ -201,10 +197,7 @@ docblock at the top of the file then this option will add a newline to it with t
 </table>
 <h2><a class="anchor" aria-hidden="true" name="prose-wrap"></a><a href="#prose-wrap" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prose Wrap</h2>
 <p><em>available in v1.8.2+</em></p>
-<p>By default, Prettier will wrap markdown text at the specified print width.
-In some cases you may want to rely on editor/viewer soft wrapping instead,
-so this option allows you to opt out. When prose wrapping is disabled, each
-paragraph will be printed on its own line.</p>
+<p>By default, Prettier will wrap markdown text at the specified print width. In some cases you may want to rely on editor/viewer soft wrapping instead, so this option allows you to opt out. When prose wrapping is disabled, each paragraph will be printed on its own line.</p>
 <table>
 <thead>
 <tr><th>Default</th><th>CLI Override</th><th>API Override</th></tr>

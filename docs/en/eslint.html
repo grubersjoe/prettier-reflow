@@ -23,14 +23,12 @@
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" name="turn-off-eslint-s-formatting-rules"></a><a href="#turn-off-eslint-s-formatting-rules" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Turn off ESLint's formatting rules</h2>
 <p>Whether you run Prettier via ESLint or run both tools separately, you probably only want to hear about each formatting issue once, and you especially don't want ESLint to complain about formatting &quot;issues&quot; which are simply a different preference than what Prettier does.</p>
-<p>So you'll probably want to disable the conflicting rules (while keeping around other rules that Prettier doesn't care about).  The easiest way to do this is to use <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a>. It's a one liner that can be added on-top of any existing ESLint configuration.</p>
+<p>So you'll probably want to disable the conflicting rules (while keeping around other rules that Prettier doesn't care about). The easiest way to do this is to use <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a>. It's a one liner that can be added on-top of any existing ESLint configuration.</p>
 <pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev eslint-config-prettier
 </span></code></pre>
 <p>.eslintrc.json:</p>
 <pre><code class="hljs css json">{
-  <span class="hljs-attr">"extends"</span>: [
-    <span class="hljs-string">"prettier"</span>
-  ]
+  <span class="hljs-attr">"extends"</span>: [<span class="hljs-string">"prettier"</span>]
 }
 </code></pre>
 <p>There are a few rules that this disables that you may want to turn back on as long as you don't use them with particular options which conflict with Prettier. See <a href="https://github.com/prettier/eslint-config-prettier#special-rules">the docs</a> for details.</p>

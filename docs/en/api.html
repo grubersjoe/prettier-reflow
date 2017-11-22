@@ -12,21 +12,15 @@
 <span class="hljs-comment">// -&gt; "foo()"</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" name="prettierchecksource-options"></a><a href="#prettierchecksource-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>prettier.check(source [, options])</code></h2>
-<p><code>check</code> checks to see if the file has been formatted with Prettier given those options and returns a <code>Boolean</code>.
-This is similar to the <code>--list-different</code> parameter in the CLI and is useful for running Prettier in CI scenarios.</p>
+<p><code>check</code> checks to see if the file has been formatted with Prettier given those options and returns a <code>Boolean</code>. This is similar to the <code>--list-different</code> parameter in the CLI and is useful for running Prettier in CI scenarios.</p>
 <h2><a class="anchor" aria-hidden="true" name="prettierformatwithcursorsource-options"></a><a href="#prettierformatwithcursorsource-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>prettier.formatWithCursor(source [, options])</code></h2>
-<p><code>formatWithCursor</code> both formats the code, and translates a cursor position from unformatted code to formatted code.
-This is useful for editor integrations, to prevent the cursor from moving when code is formatted.</p>
+<p><code>formatWithCursor</code> both formats the code, and translates a cursor position from unformatted code to formatted code. This is useful for editor integrations, to prevent the cursor from moving when code is formatted.</p>
 <p>The <code>cursorOffset</code> option should be provided, to specify where the cursor is. This option cannot be used with <code>rangeStart</code> and <code>rangeEnd</code>.</p>
 <pre><code class="hljs css js">prettier.formatWithCursor(<span class="hljs-string">" 1"</span>, { <span class="hljs-attr">cursorOffset</span>: <span class="hljs-number">2</span> });
 <span class="hljs-comment">// -&gt; { formatted: '1;\n', cursorOffset: 1 }</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" name="prettierresolveconfigfilepath-options"></a><a href="#prettierresolveconfigfilepath-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>prettier.resolveConfig(filePath [, options])</code></h2>
-<p><code>resolveConfig</code> can be used to resolve configuration for a given source file, passing its path as the first argument.
-The config search will start at the file path and continue to search up the directory (you can use <code>process.cwd()</code> to start
-searching from the current directory).
-Or you can pass directly the path of the config file as <code>options.config</code> if you don't wish to search for it.
-A promise is returned which will resolve to:</p>
+<p><code>resolveConfig</code> can be used to resolve configuration for a given source file, passing its path as the first argument. The config search will start at the file path and continue to search up the directory (you can use <code>process.cwd()</code> to start searching from the current directory). Or you can pass directly the path of the config file as <code>options.config</code> if you don't wish to search for it. A promise is returned which will resolve to:</p>
 <ul>
 <li>An options object, providing a <a href="/docs/en/configuration.html">config file</a> was found.</li>
 <li><code>null</code>, if no file was found.</li>
@@ -36,18 +30,14 @@ A promise is returned which will resolve to:</p>
 <pre><code class="hljs css js"><span class="hljs-keyword">const</span> text = fs.readFileSync(filePath, <span class="hljs-string">"utf8"</span>);
 prettier.resolveConfig(filePath).then(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span> {
   <span class="hljs-keyword">const</span> formatted = prettier.format(text, options);
-})
+});
 </code></pre>
 <p>Use <code>prettier.resolveConfig.sync(filePath [, options])</code> if you'd like to use sync version.</p>
 <h2><a class="anchor" aria-hidden="true" name="prettierclearconfigcache"></a><a href="#prettierclearconfigcache" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>prettier.clearConfigCache()</code></h2>
-<p>As you repeatedly call <code>resolveConfig</code>, the file system structure will be cached for performance.
-This function will clear the cache. Generally this is only needed for editor integrations that
-know that the file system has changed since the last format took place.</p>
+<p>As you repeatedly call <code>resolveConfig</code>, the file system structure will be cached for performance. This function will clear the cache. Generally this is only needed for editor integrations that know that the file system has changed since the last format took place.</p>
 <h2><a class="anchor" aria-hidden="true" name="prettiergetsupportinfo-version"></a><a href="#prettiergetsupportinfo-version" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>prettier.getSupportInfo([version])</code></h2>
-<p>Returns an object representing the parsers, languages and file types Prettier
-supports.</p>
-<p>If <code>version</code> is provided (e.g. <code>&quot;1.5.0&quot;</code>), information for that version will be
-returned, otherwise information for the current version will be returned.</p>
+<p>Returns an object representing the parsers, languages and file types Prettier supports.</p>
+<p>If <code>version</code> is provided (e.g. <code>&quot;1.5.0&quot;</code>), information for that version will be returned, otherwise information for the current version will be returned.</p>
 <p>The support information looks like this:</p>
 <pre><code class="hljs css typescript">{
   languages: <span class="hljs-built_in">Array</span>&lt;{
