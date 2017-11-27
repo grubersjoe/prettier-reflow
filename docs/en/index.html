@@ -21,10 +21,8 @@
 <pre><code class="hljs css js">foo(arg1, arg2, arg3, arg4);
 </code></pre>
 <p>It fits in a single line so it's going to stay as is. However, we've all run into this situation:</p>
-<!-- prettier-ignore -->
-```js
-foo(reallyLongArg(), omgSoManyParameters(), IShouldRefactorThis(), isThereSeriouslyAnotherOne());
-```
+<pre><code class="hljs css js">foo(reallyLongArg(), omgSoManyParameters(), IShouldRefactorThis(), isThereSeriouslyAnotherOne());
+</code></pre>
 <p>Suddenly our previous format for calling function breaks down because this is too long. Prettier is going to do the painstaking work of reprinting it like that for you:</p>
 <pre><code class="hljs css js">foo(
   reallyLongArg(),
