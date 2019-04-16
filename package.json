@@ -1,9 +1,11 @@
 {
-  "name": "prettier",
+  "name": "prettier-reflow",
   "version": "2.1.2",
   "description": "Prettier is an opinionated code formatter",
-  "bin": "./bin/prettier.js",
-  "repository": "prettier/prettier",
+  "bin": {
+    "prettier": "./bin/prettier.js"
+  },
+  "repository": "grubersjoe/prettier-reflow",
   "homepage": "https://prettier.io",
   "author": "James Long",
   "license": "MIT",

@@ -156,7 +156,7 @@ function genericPrint(path, options, printPath, args) {
     !(
       parentExportDecl &&
       options.locStart(parentExportDecl, { ignoreDecorators: true }) >
-        options.locStart(node.decorators[0])
+      options.locStart(node.decorators[0])
     )
   ) {
     const shouldBreak =
@@ -188,7 +188,7 @@ function genericPrint(path, options, printPath, args) {
     // Only print decorators here if they were written before the export,
     // otherwise they are printed by the node.declaration
     options.locStart(node, { ignoreDecorators: true }) >
-      options.locStart(node.declaration.decorators[0])
+    options.locStart(node.declaration.decorators[0])
   ) {
     // Export declarations are responsible for printing any decorators
     // that logically apply to node.declaration.
@@ -594,10 +594,10 @@ function printPathNoParens(path, options, print, args) {
         shouldInline
           ? printMemberLookup(path, options, print)
           : group(
-              indent(
-                concat([softline, printMemberLookup(path, options, print)])
-              )
-            ),
+            indent(
+              concat([softline, printMemberLookup(path, options, print)])
+            )
+          ),
       ]);
     }
     case "MetaProperty":
@@ -663,7 +663,7 @@ function printPathNoParens(path, options, print, args) {
                 print,
                 options,
                 /* expandLast */ args &&
-                  (args.expandLastArg || args.expandFirstArg),
+                (args.expandLastArg || args.expandFirstArg),
                 /* printTypeParams */ true
               ),
               printReturnType(path, print, options),
@@ -685,7 +685,7 @@ function printPathNoParens(path, options, print, args) {
           return (
             nextCharacter !== false &&
             options.originalText.slice(nextCharacter, nextCharacter + 2) ===
-              "=>"
+            "=>"
           );
         }
       );
@@ -1081,6 +1081,7 @@ function printPathNoParens(path, options, print, args) {
           parent.type === "DeclareClass") &&
         path.getName() === "body";
       const shouldBreak =
+        options.reflow ||
         n.type === "TSInterfaceBody" ||
         isFlowInterfaceLikeBody ||
         (n.type === "ObjectPattern" &&
@@ -1109,8 +1110,8 @@ function printPathNoParens(path, options, print, args) {
       const separator = isFlowInterfaceLikeBody
         ? ";"
         : n.type === "TSInterfaceBody" || n.type === "TSTypeLiteral"
-        ? ifBreak(semi, ";")
-        : ",";
+          ? ifBreak(semi, ";")
+          : ",";
       const leftBrace =
         n.type === "RecordExpression" ? "#{" : n.exact ? "{|" : "{";
       const rightBrace = n.exact ? "|}" : "}";
@@ -1166,10 +1167,10 @@ function printPathNoParens(path, options, print, args) {
           printed = concat([
             printedDanglingComments,
             hasLineComments ||
-            hasNewline(
-              options.originalText,
-              options.locEnd(n.comments[n.comments.length - 1])
-            )
+              hasNewline(
+                options.originalText,
+                options.locEnd(n.comments[n.comments.length - 1])
+              )
               ? hardline
               : line,
             "...",
@@ -1230,7 +1231,7 @@ function printPathNoParens(path, options, print, args) {
       // type
       if (
         path.match(
-          (node) => node.type === "ObjectPattern" && !node.decorators,
+          (node) => !options.reflow && node.type === "ObjectPattern" && !node.decorators,
           (node, name, number) =>
             shouldHugArguments(node) &&
             (name === "params" || name === "parameters") &&
@@ -1835,27 +1836,27 @@ function printPathNoParens(path, options, print, args) {
         " {",
         n.cases.length > 0
           ? indent(
-              concat([
+            concat([
+              hardline,
+              join(
                 hardline,
-                join(
-                  hardline,
-                  path.map((casePath) => {
-                    const caseNode = casePath.getValue();
-                    return concat([
-                      casePath.call(print),
-                      n.cases.indexOf(caseNode) !== n.cases.length - 1 &&
+                path.map((casePath) => {
+                  const caseNode = casePath.getValue();
+                  return concat([
+                    casePath.call(print),
+                    n.cases.indexOf(caseNode) !== n.cases.length - 1 &&
                       isNextLineEmpty(
                         options.originalText,
                         caseNode,
                         options.locEnd
                       )
-                        ? hardline
-                        : "",
-                    ]);
-                  }, "cases")
-                ),
-              ])
-            )
+                      ? hardline
+                      : "",
+                  ]);
+                }, "cases")
+              ),
+            ])
+          )
           : "",
         hardline,
         "}",
@@ -1985,8 +1986,9 @@ function printPathNoParens(path, options, print, args) {
           indent(concat([softline, path.call(print, "expression")])),
           softline,
           lineSuffixBoundary,
-          "}",
-        ])
+          "}"
+        ]),
+        { shouldBreak: options.reflow }
       );
     }
     case "JSXFragment":
@@ -2110,8 +2112,8 @@ function printPathNoParens(path, options, print, args) {
             hasOwnLineComment
               ? hardline
               : hasComment && !isOpeningFragment
-              ? " "
-              : "",
+                ? " "
+                : "",
             comments.printDanglingComments(path, options, true),
           ])
         ),
@@ -2144,13 +2146,13 @@ function printPathNoParens(path, options, print, args) {
         "{",
         n.body.length > 0
           ? indent(
-              concat([
-                hardline,
-                path.call((bodyPath) => {
-                  return printStatementSequence(bodyPath, options, print);
-                }, "body"),
-              ])
-            )
+            concat([
+              hardline,
+              path.call((bodyPath) => {
+                return printStatementSequence(bodyPath, options, print);
+              }, "body"),
+            ])
+          )
           : comments.printDanglingComments(path, options),
         hardline,
         "}",
@@ -2634,8 +2636,8 @@ function printPathNoParens(path, options, print, args) {
         extendsParts.push(
           shouldIndentOnlyHeritageClauses
             ? ifBreak(" ", line, {
-                groupId: getTypeParametersGroupId(n.typeParameters),
-              })
+              groupId: getTypeParametersGroupId(n.typeParameters),
+            })
             : line,
           "extends ",
           (n.extends.length === 1 ? identity : indent)(
@@ -3192,9 +3194,9 @@ function printPathNoParens(path, options, print, args) {
               options.bracketSpacing ? line : softline,
               n.readonly
                 ? concat([
-                    getTypeScriptMappedTypeModifier(n.readonly, "readonly"),
-                    " ",
-                  ])
+                  getTypeScriptMappedTypeModifier(n.readonly, "readonly"),
+                  " ",
+                ])
                 : "",
               printTypeScriptModifiers(path, options, print),
               path.call(print, "typeParameter"),
@@ -3441,8 +3443,8 @@ function printPathNoParens(path, options, print, args) {
               index === 0
                 ? ""
                 : isNgForOf(childPath.getValue(), index, n)
-                ? " "
-                : concat([";", line]),
+                  ? " "
+                  : concat([";", line]),
               print(childPath),
             ]),
           "body"
@@ -3466,7 +3468,7 @@ function printPathNoParens(path, options, print, args) {
           (index === 2 &&
             n.key.name === "else" &&
             parentNode.body[index - 1].type ===
-              "NGMicrosyntaxKeyedExpression" &&
+            "NGMicrosyntaxKeyedExpression" &&
             parentNode.body[index - 1].key.name === "then")) &&
           parentNode.body[0].type === "NGMicrosyntaxExpression");
       return concat([
@@ -3799,7 +3801,7 @@ function printJestEachTemplateLiteral(path, options, print) {
                   row.hasLineBreak
                     ? cell
                     : cell +
-                      " ".repeat(maxColumnWidths[index] - getStringWidth(cell))
+                    " ".repeat(maxColumnWidths[index] - getStringWidth(cell))
                 )
               )
             )
@@ -4298,8 +4300,8 @@ function printClass(path, options, print) {
       extendsParts.push(
         shouldIndentOnlyHeritageClauses
           ? ifBreak(" ", line, {
-              groupId: getTypeParametersGroupId(n.typeParameters),
-            })
+            groupId: getTypeParametersGroupId(n.typeParameters),
+          })
           : line,
         printedLeadingComments,
         printedLeadingComments && hardline,
@@ -4886,30 +4888,30 @@ function printBinaryishExpressions(
     const rightSuffix =
       node.type === "NGPipeExpression" && node.arguments.length !== 0
         ? group(
-            indent(
-              concat([
-                softline,
-                ": ",
-                join(
-                  concat([softline, ":", ifBreak(" ")]),
-                  path
-                    .map(print, "arguments")
-                    .map((arg) => align(2, group(arg)))
-                ),
-              ])
-            )
+          indent(
+            concat([
+              softline,
+              ": ",
+              join(
+                concat([softline, ":", ifBreak(" ")]),
+                path
+                  .map(print, "arguments")
+                  .map((arg) => align(2, group(arg)))
+              ),
+            ])
           )
+        )
         : "";
 
     const right = shouldInline
       ? concat([operator, " ", path.call(print, "right"), rightSuffix])
       : concat([
-          lineBeforeOperator ? line : "",
-          operator,
-          lineBeforeOperator ? " " : line,
-          path.call(print, "right"),
-          rightSuffix,
-        ]);
+        lineBeforeOperator ? line : "",
+        operator,
+        lineBeforeOperator ? " " : line,
+        path.call(print, "right"),
+        rightSuffix,
+      ]);
 
     // If there's only a single binary expression, we want to create a group
     // in order to avoid having a small right part like -1 be on its own line.
