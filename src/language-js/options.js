@@ -48,6 +48,13 @@ module.exports = {
     default: false,
     description: "Use single quotes in JSX."
   },
+  reflow: {
+    since: "1.17.0",
+    category: CATEGORY_JAVASCRIPT,
+    type: "boolean",
+    default: false,
+    description: "Enable code style for Reflow."
+  },
   quoteProps: {
     since: "1.17.0",
     category: CATEGORY_JAVASCRIPT,

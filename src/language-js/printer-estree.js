@@ -1299,6 +1299,7 @@ function printPathNoParens(path, options, print, args) {
           parent.type === "DeclareClass") &&
         path.getName() === "body";
       const shouldBreak =
+        options.reflow ||
         n.type === "TSInterfaceBody" ||
         isFlowInterfaceLikeBody ||
         (n.type === "ObjectPattern" &&
@@ -1416,7 +1417,8 @@ function printPathNoParens(path, options, print, args) {
       // type
       const parentParentParent = path.getParentNode(2);
       if (
-        (n.type === "ObjectPattern" &&
+        (!options.reflow &&
+          n.type === "ObjectPattern" &&
           parent &&
           shouldHugArguments(parent) &&
           parent.params[0] === n) ||
@@ -2138,7 +2140,8 @@ function printPathNoParens(path, options, print, args) {
           softline,
           lineSuffixBoundary,
           "}"
-        ])
+        ]),
+        { shouldBreak: options.reflow }
       );
     }
     case "JSXFragment":
