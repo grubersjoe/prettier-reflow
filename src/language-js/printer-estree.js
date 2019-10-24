@@ -1794,7 +1794,7 @@ function printPathNoParens(path, options, print, args) {
           group(
             concat([
               indent(concat([softline, path.call(print, "test")])),
-              softline
+              options.reflow ? hardline : softline,
             ])
           ),
           ")",
@@ -4332,7 +4332,7 @@ function printFunctionParams(path, print, options, expandArg, printTypeParams) {
   return concat([
     typeParams,
     "(",
-    indent(concat([softline, concat(printed)])),
+    indent(concat([options.reflow ? hardline : softline, concat(printed)])),
     ifBreak(
       canHaveTrailingComma && shouldPrintComma(options, "all") ? "," : ""
     ),
