@@ -537,7 +537,8 @@ function printJsxExpressionContainer(path, options, print) {
       softline,
       lineSuffixBoundary,
       "}",
-    ])
+    ]),
+    { shouldBreak: options.reflow }
   );
 }
 

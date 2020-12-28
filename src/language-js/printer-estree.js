@@ -772,7 +772,7 @@ function printPathNoParens(path, options, print, args) {
           group(
             concat([
               indent(concat([softline, path.call(print, "test")])),
-              softline,
+              options.reflow ? hardline : softline,
             ])
           ),
           ")",

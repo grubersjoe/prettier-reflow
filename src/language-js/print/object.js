@@ -58,6 +58,7 @@ function printObject(path, options, print) {
       parent.type === "DeclareClass") &&
     path.getName() === "body";
   const shouldBreak =
+    options.reflow ||
     n.type === "TSInterfaceBody" ||
     isFlowInterfaceLikeBody ||
     (n.type === "ObjectPattern" &&
@@ -208,7 +209,8 @@ function printObject(path, options, print) {
   // type
   if (
     path.match(
-      (node) => node.type === "ObjectPattern" && !node.decorators,
+      (node) =>
+        !options.reflow && node.type === "ObjectPattern" && !node.decorators,
       (node, name, number) =>
         shouldHugFunctionParameters(node) &&
         (name === "params" ||

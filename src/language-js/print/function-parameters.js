@@ -152,7 +152,7 @@ function printFunctionParameters(
   return concat([
     typeParams,
     "(",
-    indent(concat([softline, concat(printed)])),
+    indent(concat([options.reflow ? hardline : softline, concat(printed)])),
     ifBreak(
       !hasRestParameter(functionNode) && shouldPrintComma(options, "all")
         ? ","
