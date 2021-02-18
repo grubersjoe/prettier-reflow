@@ -2206,9 +2206,14 @@ chrome-trace-event@^1.0.2:
   dependencies:
     tslib "^1.9.0"
 
-ci-info@^2.0.0, ci-info@watson/ci-info#f43f6a1cefff47fb361c88cf4b943fdbcaafe540:
+ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://codeload.github.com/watson/ci-info/tar.gz/f43f6a1cefff47fb361c88cf4b943fdbcaafe540"
+
+ci-info@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.1.0.tgz#88317ee4f73d176c6ed96ab5ab5715bc1620f481"
+  integrity sha512-/ygnIwc7KxTbHzSsQIkYprfWIsTBcmLrfrbpozFo/Rcalh4rOa68x4DFJWHxyouwAhDJ1bl0JW9xOP4F8+Q4Ug==
 
 cjk-regex@2.0.0:
   version "2.0.0"
