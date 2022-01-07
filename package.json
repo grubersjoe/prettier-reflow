@@ -124,7 +124,7 @@
     "rollup": "2.33.3",
     "rollup-plugin-node-globals": "1.4.0",
     "rollup-plugin-terser": "7.0.2",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "snapshot-diff": "0.8.1",
     "strip-ansi": "6.0.0",
     "synchronous-promise": "2.0.15",
